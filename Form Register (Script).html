@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Register</title>
-    # Rangga Dwi Nugraha <br>
-    # Kelas XII - G
-    <hr>
-    <p>Register NOW !!</p>
     <style>
         input {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -17,23 +13,75 @@
             color: crimson;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
-
         button {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             color: rgb(9, 0, 124);
             font-style: oblique;
             font-weight: bolder;
         }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
-    <form action="" method="get" accept-charset="UTF-8">
-        <input required type="text" value="" placeholder="Nama"> <br>
-        <input required type="email" value="" placeholder="Email"><br>
-        <input required type="password" value="" placeholder="Password"> <br>
-        <input required type="number" value="" placeholder="Handphone"><br>
-        <input required type="date" value="" placeholder="Tanggal Lahir"> <br> <br>
-        <button type="submit"> Sumbit </button>
-    </form>
+
+    <!-- Author info -->
+    <p>Rangga Dwi Nugraha</p>
+    <p>Kelas XII - G</p>
+    <hr>
+
+    <p>Register NOW !!</p>
+
+    <form action="" method="get" accept-charset="UTF-8" id="registerform">
+        <input required type="text" id="Nama" name="Nama" placeholder="Nama" /><br />
+        <input required type="email" id="Email" name="Email" placeholder="Email" /><br />
+        <input required type="password" id="Password" name="Password" placeholder="Password" /><br />
+        <input required type="number" id="Handphone" name="Handphone" placeholder="Handphone" /><br />
+        <input required type="date" id="Tanggal" name="Tanggal" placeholder="Tanggal Lahir" /><br /><br />
+        <button type="submit">Submit</button>
+    </form><br /><br />
+
+    <table id="tableform">
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Tanggal Lahir</th>
+                <th>Handphone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- New entries will go here -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById("registerform").addEventListener("submit", function(e) {
+            e.preventDefault(); // prevent page refresh on submit
+
+            const Nama = document.getElementById("Nama").value;
+            const Email = document.getElementById("Email").value;
+            const Tanggal = document.getElementById("Tanggal").value;
+            const Handphone = document.getElementById("Handphone").value;
+
+            const tableBody = document.getElementById("tableform").getElementsByTagName("tbody")[0];
+            const newRow = tableBody.insertRow();
+
+            newRow.insertCell(0).textContent = Nama;
+            newRow.insertCell(1).textContent = Email;
+            newRow.insertCell(2).textContent = Tanggal;
+            newRow.insertCell(3).textContent = Handphone;
+
+            // Optional: clear form after submission
+            this.reset();
+        });
+    </script>
 </body>
 </html>
