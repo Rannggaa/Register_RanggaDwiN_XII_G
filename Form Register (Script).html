@@ -3,81 +3,246 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form Register</title>
+    <title>Register</title>
     <style>
-        input {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        
+        :root {
+            --color-bg: #FFFDF5;        
+            --color-primary: rgb(48, 170, 179);   
+            --color-secondary: #352e25; 
+            --color-accent: #69C0FF;    
+            --color-highlight: #73D13D; 
+            --color-card-bg: #FFFFFF;   
+            --color-border: #D9D9D9;    
+            --color-text: #3d315e;     
+            --color-placeholder: #8C8C8C;
         }
-        p {
-            font-size: large;
-            color: crimson;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        button {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            color: rgb(9, 0, 124);
-            font-style: oblique;
-            font-weight: bolder;
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-bg);
+            background-image: url(https://static.vecteezy.com/system/resources/previews/036/034/490/non_2x/ai-generated-meeting-blur-corporate-business-photo.jpg);
+        }
+        /* Card */
+        .container {
+            background-color: var(--color-card-bg);
+            max-width: 600px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-top: 8px solid var(--color-primary);
+        }
+        .header {
+            background-color: var(--color-primary);
+            color: #FFF;
+            text-align: center;
+            padding: 24px;
+        }
+        .header h1 {
+            font-size: 32px;
+        }
+        /* Form Section */
+        .form-section {
+            padding: 32px;
+            background-color: var(--color-bg);
+            display: flex;
+            justify-content: center;
+        }
+        form {
+            width: 100%;
+            max-width: 400px;
+            display: grid;
+            gap: 20px;
+        }
+        label {
+            color: var(--color-text);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            font-size: 15px;
+            color: var(--color-text);
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 4px rgba(105,192,255,0.3);
+        }
+        ::placeholder {
+            color: var(--color-placeholder);
+        }
+        .note {
+            font-size: 12px;
+            color: var(--color-placeholder);
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        .radio-group input, .checkbox-group input {
+            accent-color: var(--color-secondary);
+            width: auto;
+            height: auto;
+        }
+        .radio-group label, .checkbox-group label {
+            color: var(--color-text);
+            font-weight: normal;
+            margin: 0;
+        }
+        .btn-submit {
+            background-image: linear-gradient(45deg, var(--color-secondary), var(--color-accent));
+            color: #FFF;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-3px);
+        }
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+        
+        .table-section {
+            padding: 32px;
+            background-color: var(--color-bg);
+            text-align: center;
         }
         table {
-            border-collapse: collapse;
+            margin: 0 auto;
             width: 100%;
+            max-width: 400px;
+            border-collapse: collapse;
         }
         th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
+            padding: 14px;
+            font-size: 14px;
+            color: var(--color-text);
+            border-bottom: 2px solid var(--color-border);
+        }
+        th {
+            background-color: var(--color-primary);
+            color: #FFF;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: var(--color-highlight);
+        }
+        tbody tr:nth-child(even) {
+            background-color: #FFF8E1;
         }
     </style>
 </head>
 <body>
-    <p>Rangga Dwi Nugraha</p>
-    <p>Kelas XII - G</p>
-    <hr>
+    <div class="container">
+        <div class="header"><h1>REGISTER NOW</h1></div>
+        <div class="form-section">
+            <form id="registerForm">
+                
+                <div>
+                    <label for="Nama">Nama Lengkap</label>
+                    <input required type="text" id="Nama" name="Nama" placeholder="Masukkan nama Anda" />
+                    <div class="note">Contoh: Joko Widodo</div>
+                </div>
+                <div>
+                    <label for="Email">Email</label>
+                    <input required type="email" id="Email" name="Email" placeholder="example@domain.com" />
+                </div>
+                <div>
+                    <label for="Password">Password</label>
+                    <input required type="password" id="Password" name="Password" placeholder="Minimal 8 karakter" />
+                </div>
+                <div>
+                    <label for="Handphone">Handphone</label>
+                    <input required type="tel" id="Handphone" name="Handphone" placeholder="08xx-xxxx-xxxx" />
+                </div>
+                <div>
+                    <label for="Tanggal">Tanggal Lahir</label>
+                    <input required type="date" id="Tanggal" name="Tanggal" />
+                </div>
+                <div>
+                    <label>Jenis Kelamin:</label>
+                    <br>
+                    <br>
+                    <div class="radio-group">
+                        <input type="radio" id="laki" name="JenisKelamin" value="Laki-laki" required /><label for="laki">Laki-laki</label>
+                        <input type="radio" id="perempuan" name="JenisKelamin" value="Perempuan" /><label for="perempuan">Perempuan</label>
+                    </div>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree" required /><label for="agree">Saya menyetujui syarat dan ketentuan</label>
+                </div>
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+        </div>
+        <div class="table-section">
+            <table id="tableForm">
+                <thead><tr><th>Nama</th><th>Email</th><th>Tgl Lahir</th><th>Phone</th><th>Kelamin</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
 
-    <p>Register NOW !!</p>
-
-    <form action="" method="get" accept-charset="UTF-8" id="registerform">
-        <input required type="text" id="Nama" name="Nama" placeholder="Nama" /><br />
-        <input required type="email" id="Email" name="Email" placeholder="Email" /><br />
-        <input required type="password" id="Password" name="Password" placeholder="Password" /><br />
-        <input required type="number" id="Handphone" name="Handphone" placeholder="Handphone" /><br />
-        <input required type="date" id="Tanggal" name="Tanggal" placeholder="Tanggal Lahir" /><br /><br />
-        <button type="submit">Submit</button>
-    </form><br /><br />
-
-    <table id="tableform">
-        <thead>
-            <tr>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Tanggal Lahir</th>
-                <th>Handphone</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
-    </table>
-
+   
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
-        document.getElementById("registerform").addEventListener("submit", function(e) {
-            e.preventDefault(); 
+        const form = document.getElementById("registerForm");
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
 
-            const Nama = document.getElementById("Nama").value;
-            const Email = document.getElementById("Email").value;
-            const Tanggal = document.getElementById("Tanggal").value;
-            const Handphone = document.getElementById("Handphone").value;
+            
+            confetti({
+                particleCount: 150,
+                spread: 60,
+                origin: { y: 0.4 }
+            });
 
-            const tableBody = document.getElementById("tableform").getElementsByTagName("tbody")[0];
-            const newRow = tableBody.insertRow();
+            
+            const banner = document.createElement('div');
+            banner.textContent = '🎉 Selamat! 🎂';
+            banner.style.position = 'fixed';
+            banner.style.top = '20px';
+            banner.style.left = '50%';
+            banner.style.transform = 'translateX(-50%)';
+            banner.style.background = 'var(--color-primary)';
+            banner.style.color = '#fff';
+            banner.style.padding = '10px 20px';
+            banner.style.borderRadius = '8px';
+            banner.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+            document.body.appendChild(banner);
+            setTimeout(() => banner.remove(), 3000);
 
-            newRow.insertCell(0).textContent = Nama;
-            newRow.insertCell(1).textContent = Email;
-            newRow.insertCell(2).textContent = Tanggal;
-            newRow.insertCell(3).textContent = Handphone;
+            
+            const data = [
+                this.Nama.value,
+                this.Email.value,
+                this.Tanggal.value,
+                this.Handphone.value,
+                document.querySelector('input[name="JenisKelamin"]:checked').value
+            ];
+            const tbody = document.getElementById("tableForm").querySelector("tbody");
+            const row = tbody.insertRow();
+            data.forEach((t,i) => row.insertCell(i).textContent = t);
 
-           
             this.reset();
         });
     </script>
